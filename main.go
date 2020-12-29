@@ -10,13 +10,14 @@ type Config struct {
   rt *wails.Runtime
 }
 
-func (c *Config) WailsInit(runtime *wails.Runtime) {
+func (c *Config) WailsInit(runtime *wails.Runtime) error {
   c.rt = runtime
   corgi.Setup(runtime)
+  return nil
 }
 
 func main() {
-  config := Config{}
+  config := &Config{}
   //corgi.Start()
 
   js := mewn.String("./frontend/dist/app.js")
