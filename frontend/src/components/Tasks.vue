@@ -8,6 +8,7 @@
         <tr class="tableHeader">
           <th class="tableHead">Name</th>
           <th class="tableHead">Project</th>
+          <th class="tableHead tableHeadCentered">Status</th>
           <th class="tableHead tableHeadCentered">Commits</th>
         </tr>
         <tr class="tableRow" v-for="item in tasks" :key="item.id">
@@ -16,6 +17,9 @@
           </td>
           <td class="tableCell">
             {{ item.project.name }}
+          </td>
+          <td class="tableCell tableCellCentered">
+            {{ item.status }}
           </td>
           <td class="tableCell tableCellCentered">
             {{ item.commits }}
@@ -35,12 +39,12 @@ export default {
   data: function() {
     return {
       tasks: [
-        { id: 0, name: 'task test', commits: 5, project: { name: 'Some Project Name'}},
-        { id: 1, name: 'task test', commits: 5, project: { name: 'Some Project Name'}},
-        { id: 2, name: 'task test', commits: 5, project: { name: 'Some Project Name'}},
+        { id: 0, name: 'task test', status: 'Ready To Start', commits: 5, project: { name: 'Some Project Name'}},
+        { id: 1, name: 'task test', status: 'In Progress', commits: 5, project: { name: 'Some Project Name'}},
+        { id: 2, name: 'task test', status: 'Completed', commits: 5, project: { name: 'Some Project Name'}},
       ]
     }
-  }
+  },
 }
 </script>
 

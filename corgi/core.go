@@ -4,6 +4,15 @@ import "github.com/wailsapp/wails"
 
 var rt *wails.Runtime
 
+type TaskStatus int
+const (
+	ReadyToStart TaskStatus = iota
+	InProgress
+	Paused
+	Completed
+	Blocked
+)
+
 func Setup(runtime *wails.Runtime) {
 	rt = runtime
 }
@@ -21,6 +30,7 @@ type Task struct {
 	ProjectID int
 	Name string
 	Description string
+	Status TaskStatus
 	WorkFolder string
 	SubTasks []Task
 	WorkLog []WorkEntry
