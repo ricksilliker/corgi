@@ -6,13 +6,18 @@ import (
   "github.com/wailsapp/wails"
 )
 
-func basic() string {
-  return "Hello World!"
+type Config struct {
+  rt *wails.Runtime
+}
+
+func (c *Config) WailsInit(runtime *wails.Runtime) {
+  c.rt = runtime
+  corgi.Setup(runtime)
 }
 
 func main() {
-
-  corgi.Start()
+  config := Config{}
+  //corgi.Start()
 
   js := mewn.String("./frontend/dist/app.js")
   css := mewn.String("./frontend/dist/app.css")
@@ -25,6 +30,6 @@ func main() {
     CSS:    css,
     Colour: "#131313",
   })
-  app.Bind(basic)
+  app.Bind(config)
   app.Run()
 }
